@@ -1,0 +1,25 @@
+**Time Complexity** for binary search: O(logN)
+**Middle num calculation:**
+① m = (l + h) / 2   
+② m = l + (h - l) / 2  **(Recommended)**
+
+Templete (saved from 704. Binary Search)
+*Python version*
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target not in nums:
+            return -1
+
+        left = 0
+        right = len(nums) - 1
+        
+
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid
+        return left
+```
