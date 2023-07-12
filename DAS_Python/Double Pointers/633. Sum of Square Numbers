@@ -1,0 +1,26 @@
+#Medium
+"""
+https://leetcode.com/problems/sum-of-square-numbers/description/
+
+Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.
+
+Input: c = 5
+Output: true
+Explanation: 1 * 1 + 2 * 2 = 5
+"""
+
+import math
+
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        left = 0
+        right = int(math.sqrt(c))
+
+        while left <= right:
+            if left*left + right*right > c:
+                right -= 1
+            elif left*left + right*right < c:
+                left += 1
+            else:
+                return True
+        return False
