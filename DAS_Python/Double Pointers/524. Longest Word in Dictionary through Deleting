@@ -1,0 +1,24 @@
+#Medium
+"""
+https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/description/
+
+Input: s = "abpcplea", dictionary = ["ale","apple","monkey","plea"]
+Output: "apple"
+"""
+
+class Solution:
+    def findLongestWord(self, s: str, d: List[str]) -> str:
+        def isSubsequence(sub,main):
+            i, j, m, n = 0, 0, len(sub), len(main)
+            while i < m and j < n and n - j >= m - i:
+                if sub[i] == main[j]:
+                    i += 1
+                j += 1
+            return i == m
+        res = ''
+        temp = sorted(d, key = lambda x: len(x), reverse = True)
+        for word in temp:
+            if len(word) < len(res): return res
+            if (not res or word < res) and isSubsequence(word,s):
+                res = word
+        return res
