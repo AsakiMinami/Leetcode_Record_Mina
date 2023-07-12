@@ -1,0 +1,34 @@
+#Easy
+"""
+https://leetcode.com/problems/reverse-vowels-of-a-string/description/
+
+Given a string s, reverse only all the vowels in the string and return it.
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+Input: s = "hello"
+Output: "holle"
+"""
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        def reverse(temp,left,right):
+            temp[left],temp[right] = temp[right],temp[left]
+        l = ['a', 'e', 'i', 'o','u','A','E','I','O','U']
+        temp = list(s)
+        left = 0
+        right = len(s) - 1
+
+        while left < right:
+            if temp[left] in l and temp[right] in l:
+                reverse(temp,left,right)
+                left += 1
+                right -= 1
+            elif temp[left] in l and temp[right] not in l:
+                right -= 1
+            elif temp[left] not in l and temp[right] in l:
+                left += 1
+            else:
+                left += 1
+                right -= 1
+
+        return ''.join(temp)
