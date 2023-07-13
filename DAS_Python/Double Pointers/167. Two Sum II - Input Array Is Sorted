@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Medium
 """
 https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
@@ -21,6 +20,3 @@ class Solution:
                 return [left+1,right+1]
         return None
             
-=======
-
->>>>>>> ea734d5612b9b3f396b3f477d8a098f6a311f159
