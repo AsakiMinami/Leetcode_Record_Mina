@@ -1,0 +1,26 @@
+#Easy 
+"""
+https://leetcode.com/problems/squares-of-a-sorted-array/
+Follow up: Squaring each element and sorting the new array is very trivial, 
+could you find an O(n) solution using a different approach?
+
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+"""
+
+（版本一）双指针法
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        l, r, i = 0, len(nums)-1, len(nums)-1
+        res = [float('inf')] * len(nums) # 需要提前定义列表，存放结果
+        while l <= r:
+            if nums[l] ** 2 < nums[r] ** 2: # 左右边界进行对比，找出最大值
+                res[i] = nums[r] ** 2
+                r -= 1 # 右指针往左移动
+            else:
+                res[i] = nums[l] ** 2
+                l += 1 # 左指针往右移动
+            i -= 1 # 存放结果的指针需要往前平移一位
+        return res
